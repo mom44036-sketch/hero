@@ -266,9 +266,9 @@ function renderSlide(i, instant=false){
   rowEl.classList.remove('slide-enter'); void rowEl.offsetWidth; rowEl.classList.add('slide-enter');
   requestAnimationFrame(()=>{
     progressEl.style.transition='none'; progressEl.style.width='0%';
-    requestAnimationFrame(()=>{ progressEl.style.transition='width 20s linear'; progressEl.style.width='100%'; });
+    requestAnimationFrame(()=>{ progressEl.style.transition='width 30s linear'; progressEl.style.width='100%'; });
   });
-  clearInterval(timer); timer=setTimeout(()=>next(),20000);
+  clearInterval(timer); timer=setTimeout(()=>next(),30000);
 }
 function next(){ current=(current+1)%slides.length; renderSlide(current); }
 function prevSlide(){ current=(current-1+slides.length)%slides.length; renderSlide(current); }
@@ -277,7 +277,7 @@ document.getElementById('next').onclick=next;
 document.getElementById('prev').onclick=prevSlide;
 let paused=false;
 document.getElementById('hero').addEventListener('mouseenter',()=>{ if(!paused){progressEl.style.animationPlayState='paused'; progressEl.style.transition='none'; const w=progressEl.offsetWidth; const parent=progressEl.parentElement.offsetWidth; const pct=(w/parent)*100; progressEl.style.width=pct+'%'; clearTimeout(timer); paused=true; } });
-document.getElementById('hero').addEventListener('mouseleave',()=>{ if(paused){ const w=parseFloat(progressEl.style.width)||0; const remain=(100-w)/100*20000; progressEl.style.transition=`width ${remain}ms linear`; progressEl.style.width='100%'; timer=setTimeout(()=>next(),remain); paused=false; } });
+document.getElementById('hero').addEventListener('mouseleave',()=>{ if(paused){ const w=parseFloat(progressEl.style.width)||0; const remain=(100-w)/100*30000; progressEl.style.transition=`width ${remain}ms linear`; progressEl.style.width='100%'; timer=setTimeout(()=>next(),remain); paused=false; } });
 createDots(); renderSlide(0,true);
 </script>
 </body>
