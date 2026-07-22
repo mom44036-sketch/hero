@@ -299,7 +299,7 @@ function renderSlide(i, instant=false){
   createDots();
   // row animation reset
   rowEl.classList.remove('slide-enter'); void rowEl.offsetWidth; rowEl.classList.add('slide-enter');
-  // progress animation 10s
+  // progress animation 20s
   requestAnimationFrame(()=>{
     progressEl.style.transition='none'; progressEl.style.width='0%';
     requestAnimationFrame(()=>{ progressEl.style.transition='width 20s linear'; progressEl.style.width='100%'; });
@@ -315,7 +315,7 @@ document.getElementById('prev').onclick=prevSlide;
 // pause on hover
 let paused=false;
 document.getElementById('hero').addEventListener('mouseenter',()=>{ if(!paused){progressEl.style.animationPlayState='paused'; progressEl.style.transition='none'; const w=progressEl.offsetWidth; const parent=progressEl.parentElement.offsetWidth; const pct=(w/parent)*100; progressEl.style.width=pct+'%'; clearTimeout(timer); paused=true; } });
-document.getElementById('hero').addEventListener('mouseleave',()=>{ if(paused){ const w=parseFloat(progressEl.style.width)||0; const remain=(100-w)/100*10000; progressEl.style.transition=`width ${remain}ms linear`; progressEl.style.width='100%'; timer=setTimeout(()=>next(),remain); paused=false; } });
+document.getElementById('hero').addEventListener('mouseleave',()=>{ if(paused){ const w=parseFloat(progressEl.style.width)||0; const remain=(100-w)/100*20000; progressEl.style.transition=`width ${remain}ms linear`; progressEl.style.width='100%'; timer=setTimeout(()=>next(),remain); paused=false; } });
 // init
 createDots(); renderSlide(0,true);
 </script>
