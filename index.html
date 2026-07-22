@@ -302,7 +302,7 @@ function renderSlide(i, instant=false){
   // progress animation 10s
   requestAnimationFrame(()=>{
     progressEl.style.transition='none'; progressEl.style.width='0%';
-    requestAnimationFrame(()=>{ progressEl.style.transition='width 10s linear'; progressEl.style.width='100%'; });
+    requestAnimationFrame(()=>{ progressEl.style.transition='width 20s linear'; progressEl.style.width='100%'; });
   });
   // auto timer
   clearInterval(timer); timer=setTimeout(()=>next(),20000);
