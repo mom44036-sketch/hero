@@ -305,7 +305,7 @@ function renderSlide(i, instant=false){
     requestAnimationFrame(()=>{ progressEl.style.transition='width 10s linear'; progressEl.style.width='100%'; });
   });
   // auto timer
-  clearInterval(timer); timer=setTimeout(()=>next(),10000);
+  clearInterval(timer); timer=setTimeout(()=>next(),20000);
 }
 function next(){ current=(current+1)%slides.length; renderSlide(current); }
 function prevSlide(){ current=(current-1+slides.length)%slides.length; renderSlide(current); }
